@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+body { margin:0;padding:0;color:#959595;font-size:12px; line-height:1.4em; font-family:arial,微软宋体,tahoma,宋体;background-color:#26a860; }
+h1,h2,h3,h4,h5,h6 { margin:0px; padding:0px;}
+i,b{ font-weight:normal; text-decoration:none; font-style:normal;}
+img { border:0; display:block;}
+p,dl,dt,dd { margin:0; padding:0;}
+ul,li { list-style:none; margin:0; padding:0;}
+input{ margin:0; padding:0; border:none; outline:none;}
+a{ color:#4d4c4c; text-decoration:none; outline:none; display:block; border:none;}
+a:hover{text-decoration:none;}
+.fl { float:left; display:inline;}
+.fr { float:right; display:inline;}
+.clear{ clear:both; clear:both; font-size:0px; line-height:0; height:0;}
+.img{ width:100%; height:auto; overflow:hidden;}
+.warp{ height:auto; overflow:hidden; max-width:640px; margin:0 auto;background:#f7f7f7;}
+
+.s_container{background:url(../img/bg.jpg) top no-repeat #26a860;}
+.login {height:auto; overflow:hidden; max-width:640px; margin:0 auto; position: relative;}
+.login_sign { margin:0 10%; overflow:hidden;}
+.login_sign_blk { text-align:center; font-size:30px; padding:1em 0; color:#fff;}
+.login_sign_head { border-radius:50em; width:40%;  margin:0 auto 1em auto;}
+.login_input_100 { width:100%; display:inline-block; margin:0.4em 0; height:3em; border-radius:0.3em; padding-left:1.5em; font-size:1.5em; }
+.login_but { color:#26a860; background:#fff100; display:block; height:2em; line-height:2em; font-size:2em; text-align:center; border-radius:0.3em; margin:0.3em 0;}
+.bommot_link { text-align:center; padding:1.5em 0;}
+.bommot_link a { color:#fff; display:inline-block; font-size:1.2em;}
+.bommot_link span { display:inline-block; color:#4bd089; padding:0; font-size:1.5em;}
+.w30 { width:30%; display:inline-block;}
+.w60 { width:66%; display:inline-block; margin-left:2%; float:right;}
+.login_input_time { overflow:hidden; clear:both; display:block;}
+.login_textarea_100 {width:100%; display:inline-block; margin:0.4em 0; height:6em; border-radius:0.3em; padding-left:1.5em;  font-size:1.5em;}
+.input_time_link {background:url(../img/time.png) 0.4em 0.3em #fff219 no-repeat; float:right; width:4.5em; height:4.5em; margin-top:-5.1em; right:0; border-radius:0 0.2em 0.2em 0; position:absolute;}
+.input_position_span {position:absolute; top:1.3em; font-size:2em; color:#eb6100;left: 0.5em;}
+.form_element{position: relative;}
+.input_prompt_font label { color:#fff100; display:block; font-size:1.5em; line-height:2em; padding:0em 1em;}
+.input_blak { width:100%; display:block; padding:0.5em 0 1em 2.3em; overflow:hidden;}
+.formplate { min-width:48%; max-width:100%;float:left;margin-top:0.5em}
+.register_title{color: #fff;font-size:2em;margin:0.5em 0 0 1.3em;  display: inline-block;line-height: 1.2em;}
+.input_blak .formplate label span { color:#fff; height: 1.5em;overflow: hidden;}
+.input_blak label { max-width:100%; }
+.jzmm { width:100%; text-align:center;}
+.input_ph_link {float:right; width:8.5em; height:3em; margin-top:-3.4em; right:0;  border-radius:0 0.2em 0.2em 0; line-height:3em; position:absolute; color:#515151; font-size:1.5em; text-align:center; background:#fff219;}
+.text_left { padding-left:8em;}
+.yzm_img { position:absolute; float:left; margin-top:-3.8em; margin-left:2em;}
+.s_login {display: inline-block; }
+.third_div { padding:1em 0; color:#fff; display:block; text-align:center; font-size:1.5em; padding-right:3em;}
+
+.s_container .captcha_bbox{position: absolute;z-index:2;width:100%;max-width: 640px;font-family: 'Microsoft YaHei';display:none;}
+.s_container .captcha_bbox .captcha_box{position:relative;margin:0 13%;background-color:#fff;height:200px;border-radius:5px;overflow: hidden;}
+.s_container .captcha_bbox .captcha_box .captcha_title{text-align: center;font-size:15px;margin-top:40px;color:#000;}
+.s_container .captcha_bbox .captcha_box .form_element{border:1px solid #bbb;margin:20px 5%;border-radius: 5px}
+.s_container .captcha_bbox .captcha_box .login_input_100{height:2em;padding-left:6em;}
+.s_container .captcha_bbox .captcha_box img{margin-top:-3em;margin-left:1em;}
+.s_container .captcha_bbox .captcha_box .captcha_sms_send{background-color:#666;height:50px;color:#fff;text-align: center;font-size: 18px;line-height: 50px;position: absolute;bottom: 0;width:100%;letter-spacing:1em;text-indent: 1em;}
+.s_container .captcha_bbox .captcha_box .captcha_sms_cancel{position: absolute;right:0;top:0;font-size:2.8em;width:1em;height:1em;text-align: center;line-height: 1em;color:#ccc;font-weight:lighter;}
+.s_container .captcha_floatlayerbg{position:fixed;width:100%;background-color:#151515;top:0px;left:0px;opacity:0.82;z-index:1;display:none;height:100%}
+
+#datePlugin ul,#datePlugin li{ list-style: none;list-style-type:none;}
+.page {display: none;position: absolute;top: 0;left: 0;bottom: 0;right: 0;width: 100%;height: 100%;overflow: hidden;}
+
+#datescroll div{float: left;margin-top: 15px;padding-right: 22px;height:225px;}
+#datescroll_datetime div{float: left;margin-left: 10%;padding-right: 22px;}
+#yearwrapper{position: absolute;left: 0;top:45px;bottom: 60px;width:100%;margin-left: 5%;}
+#monthwrapper{position: absolute;left: 36%;top:45px;bottom: 60px;width:100%;}
+#daywrapper{position: absolute;left: 67%;top:45px;bottom: 60px;width:80%;}
+#Hourwrapper{position: absolute;left: 0;top:195px;bottom: 68px;width:80%;}
+#Minutewrapper{position: absolute;left: 26%;top:195px;bottom: 68px;width:80%;}
+#Secondwrapper{position: absolute;left: 50%;top:195px;bottom: 68px;width:80%;}
+/*增加手指滑动触摸面积*/
+#Hourwrapper ul li{color: #898989;font-size: 16px;}
+#Minutewrapper ul li{color: #898989;font-size: 16px;}
+#Secondwrapper ul li{color: #898989;font-size: 16px;}
+#yearwrapper ul li{color: #898989;font-size: 16px;}
+#yearwrapper ul li.selected{color:#fff;}
+#yearwrapper ul li.first_li{color:#c4c4c4;}
+#monthwrapper ul li{color: #898989;font-size: 16px;}
+#monthwrapper ul li.selected{color:#fff;}
+#monthwrapper ul li.first_li{color:#c4c4c4;}
+#daywrapper ul li{color: #898989;font-size: 16px;}
+#daywrapper ul li.selected{color:#fff;}
+#daywrapper ul li.first_li{color:#c4c4c4;}
+#markyear{position:relative; margin-left: 76px;top:-2px;}
+#markmonth{position:relative; margin-left: 40px;top:-2px;}
+#markday{position:relative; margin-left: 42px;top:-2px;}
+#markhour{position:relative; margin-left: 62px;top:-2px;}
+#markminut{position:relative; margin-left: 58px;top:-2px;}
+#marksecond{position:relative; margin-left: 68px;top:-2px;}
+#dateheader{width: 100%;height: 50px;background: #79C12F;text-align: center;color: #fff;line-height: 50px;font-size: 20px;}
+#setcancle ul{text-align: center;line-height: 30px; margin:1px auto;font-size: 20px;}
+#setcancle ul li{border-radius:3px;float: left;width: 40%;height: 30px;list-style-type: none;font-family:'microsoft yahei';font-size:16px;}
+#dateconfirm{position: absolute;background:#26a860; top:12px; line-height:35px; padding:0 20px; text-align:center;right: 16px;color:#fff;border-radius:3px;}
+#datecancle{position: absolute;background:  #dcdddd;right:20px;width: 40%;color:#666;}
+#dateshadow{display: none;position: absolute;width: 100%;height: 100%;top:0;left:0;background: #000; filter:alpha(Opacity=50);-moz-opacity:0.5;opacity: 0.5;z-index: 100;}
+#datePage{font-size: 22px; border-radius: 3px; position:absolute;top:110px;MARGIN-RIGHT: auto;vertical-align:middle;
+MARGIN-LEFT: auto; max-width: 512px;height: 300px;background: #FFFFFF;z-index:9999999;}
+#datetitle{ margin:10px 15px; padding-bottom:15px; height:50px;color: #26a860;line-height: 50px;font-size: 20px;font-family:'microsoft yahei';border-bottom: 1px solid #E0E0E0;}
+#datetitle h1{font-weight:normal;float:left; font-size:20px;}
+#datemark{font-size: 18px;left:5%;width: 90%;height:35px;position:absolute;top:155px;background:#26a860;border:1px solid #26a860;border-radius:5px;}
+#timemark{left:85%;width: 90%;position:absolute;background:url(../img/app.png); display:block;  height:50px;}
+.wraper_marker{left:5%;width: 90%;position:absolute;background:url(../img/app.png); display:block; z-index:999999; height:50px;}
+#datescroll{width:100%;height:250px;text-align: center;line-height:45px;}
+#datescroll_datetime{display: none;background:#F8F8F8;width:94%; margin:10px 3%;margin-top: 10px;border: 1px solid #E0E0E0;border-radius: 4px;height: 120px;text-align: center;line-height: 40px;}
+#yearwrapper ul,#monthwrapper ul,#daywrapper ul{width:33%;}
+#Hourwrapper ul,#Minutewrapper ul,#Secondwrapper ul{width:40%;}
+#dateFooter{width:100%;background: #fff;height: 50px;bottom: 0px;position: absolute;}

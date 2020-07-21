@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html style="" class=" js canvas canvastext no-touch rgba backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations cssgradients csstransforms csstransforms3d csstransitions fontface"><head><script src="login_files/webuploader.js"></script><script src="login_files/validate_strongpwd.js"></script><script src="login_files/jquery.js"></script>
+<title>您的网站名称</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=yes" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no,user-scalable=no">
+<script type="text/javascript" language="javascript" src="login_files/a.js"></script>
+<link href="login_files/formplate.css" rel="stylesheet" type="text/css">
+<link href="login_files/style.css" rel="stylesheet" type="text/css">
+<link href="login_files/base.css" rel="stylesheet" type="text/css">
+<link href="login_files/theme.css" rel="stylesheet" type="text/css">
+<link href="login_files/webuploader3.css" rel="stylesheet" type="text/css">
+<link href="login_files/uploadify3.css" rel="stylesheet" type="text/css">
+<style>
+.input_ph_link.disabled,.s_container .captcha_bbox .captcha_box a.captcha_sms_send.disabled{color:#B0AFAF;}
+
+.input_blak .formplate.jzmm.forgetpwd{ width:35%; }
+.input_prompt_font label{font-size:1.3em;}
+@media only screen and (max-width: 340px)
+{
+.input_blak .formplate.jzmm{ width:100%!important; float:none!important;}
+.input_blak .formplate.jzmm.forgetpwd{ width:100%!important; }
+}
+</style>
+</head>
+<body style="min-height: 951px;">
+<style type="text/css"></style><script language="javascript">
+    function add_id(id){
+           window.id = id;
+    }
+	var webmodel = {"webmtype": 'mb'};
+	function parseToURL(module,action,anotherparams){
+		webmodel = {};
+		var defaultparams = {"_m": module,"_a": action};
+		var urlparams=$.extend({}, anotherparams, defaultparams, webmodel);
+		var paramstr=$.param(urlparams);
+		return "http://wd-shops-1293157-m.view.sitestar.cn/index.php?"+paramstr;
+	}
+(function(){
+	var lang='zh_CN'
+
+	window._addDatePicker = function(dom){
+				dom.closest('.login_input_time').find('.input_time_link').click(function(e){
+					e.preventDefault();
+					dom.trigger('click');
+				})
+				dom.click(function(){
+					$('#datePlugin').remove();
+				     $('body').append('<div id="datePlugin"></div>');
+					$('#datePlugin').click(function(){
+						return false;
+					}).mousedown(function(){
+						return false;
+					})
+				})
+				dom.date({locale:lang},function(datestr){
+					dom.val(datestr);
+					$(window).unbind('scroll.datestop');
+				});
+				dom.click(function(){
+					$('#dateshadow').height($('#scroll_container').height());
+					var curw=dom.outerWidth();
+				     $('#datePage').css('width',curw+'px');
+					var winh=$(window).height();
+					var pickerh=300;
+					var scrolltop=$(window).scrollTop();
+					var pickert=scrolltop+(winh-300)/2;
+					$('#datePage').css('top',pickert+'px');
+					$('#dateshadow').height($('#scroll_container').height());
+					$(window).bind('scroll.datestop',function(e){
+						$(window).scrollTop(scrolltop);
+					})
+				})
+	}
+})()
+
+$(document).ready(function()
+{
+
+	// Execute formplate
+	$('#scroll_container').formplate();
+	//if($('.agree_check').length>0) $('.agree_check').closest('.fp-checkbox').addClass('checked');
+	var showfuncs={};
+	showfuncs['register']=function(){
+		var tempmw;
+		$('.user_register_div .input_blak label').each(function(){
+			var self=$(this);var temp=self.closest('.formplate');
+			var chechspan=temp.find('.fp-checkbox,.fp-radio');
+			if(!tempmw){
+				temp.css('width','100%');
+				tempmw=temp.width();
+				temp.css('width','');
+			}
+			var maxw=tempmw-chechspan.width()-15;
+			self.css('max-width',(maxw)+'px');
+		})
+	}
+
+	showfuncs['login']=function(){}
+	showfuncs['quick']=function(){}
+
+	var tabtype='login';
+	$('.user_'+tabtype+'_div').show();
+	showfuncs[tabtype]();
+
+	$('.goto_login_div').click(function(e){
+		e.preventDefault();
+                var regurl = location.href;
+                if(/_t2ype=[^&]+/.exec(regurl)){
+                    regurl=regurl.replace(/_t2ype=[^&]+/,'_t2ype=login');
+                }else{
+                    if(regurl.indexOf('?')>=0){
+                        regurl+='&_t2ype=login';
+                    }else{
+                        regurl+='?_t2ype=login';
+                    }
+                }
+                location.href = regurl;
+                return false;
+//		var tabtype='login';
+//		$('.login:not(.user_'+tabtype+'_div)').hide();
+//		$('body').height($(window).height());
+//		setTimeout(function(){
+//			$(window).scrollTop(0);
+//			$('.user_'+tabtype+'_div').show();
+//			showfuncs[tabtype]();
+//			$('body').css('height','');
+//		},0);
+
+	})
+
+	$('.goto_quick_div').click(function(e){
+		e.preventDefault();
+		var tabtype='quick';
+		$('.login:not(.user_'+tabtype+'_div)').hide();
+		$('body').height($(window).height());
+		setTimeout(function(){
+			$(window).scrollTop(0);
+			$('.user_'+tabtype+'_div').show();
+			showfuncs[tabtype]();
+			$('body').css('height','');
+		},0);
+	})
+
+	$('.goto_register_div').click(function(e){
+		e.preventDefault();
+                var regurl = location.href;
+                if(/_t2ype=[^&]+/.exec(regurl)){
+                    regurl=regurl.replace(/_t2ype=[^&]+/,'_t2ype=register');
+                }else{
+                    if(regurl.indexOf('?')>=0){
+                        regurl+='&_t2ype=register';
+                    }else{
+                        regurl+='?_t2ype=register';
+                    }
+                }
+                location.href = regurl;
+                return false;
+//		var tabtype='register';
+//		$('.login:not(.user_'+tabtype+'_div)').hide();
+//		$('body').height($(window).height());
+//		setTimeout(function(){
+//			$(window).scrollTop(0);
+//			$('.user_'+tabtype+'_div').show();
+//			showfuncs[tabtype]();
+//			$('body').css('height','');
+//		},0);
+	})
+
+	$(window).resize(function(){
+		$('body').css('height','');
+		$('body').css('min-height',($(window).height())+'px');
+		$('#scroll_container .user_login_div').css('min-height','');
+		var wh=$(window).height();
+		var bodyh=$('body').height();
+		if(bodyh<wh) $('#scroll_container .user_login_div').css('min-height',wh+'px');
+	})
+
+	$(window).triggerHandler('resize');
+});
+
+</script>
+<div id="scroll_container" class="s_container">
+<input id="datehide" name="datehide" type="hidden" value="">
+<div class="login user_login_div" style="">
+    <div class="login_sign">
+        <p class="login_sign_blk ulreg_titletxt">欢迎登录</p>
+        <img src="login_files/01.jpg" class="login_sign_head">
+		<form name="pageform" method="post" action="">
+        <div>
+		   <div class="form_element">
+		  <input name="user" type="text" placeholder="电子邮箱" class="login_input_100">
+		   </div>
+		   <div class="form_element">
+            <input name="pswd" type="password" placeholder="密码" class="login_input_100">
+		   </div>
+		   			<span class="input_prompt_font login_valid_txt" style="text-align: center;"><label class="error"></label></span>
+            <div class="input_blak">
+	            <div class="formplate jzmm">
+	                <span class="fp-checkbox"><input type="checkbox" name="remembered" value="1"></span>
+                    <label><span class="ulreg_titletxt">下次自动登录</span></label>
+	            </div>
+        </div>
+        </div>
+		</form>
+        <a class="login_but login_submit  pagetype" href="javascript:void(0);">登录</a>
+		        <div class="bommot_link">
+			<a href="javascript:void(0);" class="goto_register_div ulreg_titletxt">用户注册</a>
+						            <span class="ulreg_titletxt">|</span> <a href="http://wd-shops-1293157-m.view.sitestar.cn/" class="ulreg_titletxt">返回首页</a>
+	    </div>
+    </div>
+</div>
+<div class="login user_register_div" style="display:none;">
+    <div class="login_sign">
+        <p class="login_sign_blk ulreg_titletxt">欢迎注册</p>
+      <div>
+		<form name="regiform" id="regiform" method="post" action="" novalidate="novalidate">
+	    <div class="form_element">
+			    <input type="email" name="user[email]" id="user_email_" class="cstinput login_input_100" required="" placeholder="电子邮箱" aria-required="true">			<input type="hidden" name="fxid" value="">
+			<span class="input_position_span ">*</span>
+			<span class="input_prompt_font valid_txt"></span>
+			<input type="hidden" name="user[headphoto]" id="user_re_headphoto_" value="5">
+	    </div>
+	   <div class="form_element">
+			 <input type="password" name="user[passwd]" id="user_passwd_" value="" class="cstinput login_input_100" placeholder="密码">			 <span class="input_position_span">*</span>
+			 <span class="input_prompt_font valid_txt"></span>
+	   </div>
+	   <div class="form_element">
+        <input type="password" name="user[re_passwd]" id="user_re_passwd_" value="" class="cstinput login_input_100" placeholder="确认密码">        <span class="input_position_span">*</span>
+	   <span class="input_prompt_font valid_txt"></span>
+	   </div>
+		
+		     		       			  		     	  </form>
+      </div>
+
+        <a class="login_but register_submit" href="javascript:void(0);">注册</a>
+        <div class="bommot_link">
+            <a href="javascript:void(0);" class="goto_login_div ulreg_titletxt">已有账号</a> <span class="ulreg_titletxt">|</span> <a href="http://wd-shops-1293157-m.view.sitestar.cn/" class="ulreg_titletxt">返回首页</a>
+	    </div>
+    </div>
+</div>
+</div>
+<script language="javascript">
+var wait=60;
+function mail_renzheng(sss){
+	if($(sss).hasClass('disabled')) return;
+	var email = $("#user_email_").val();
+	var myreg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+	if(!myreg.test(email)){
+		alert('电子邮件地址错误');
+		$('#user_email_').focus();
+		return;
+	}
+
+	var yanzhengma = $("#rand_rs_regsiter").val();
+	if(yanzhengma == ''){
+		alert("请输入「验证码」");
+		$('#rand_rs_regsiter').focus();
+		return;
+	}
+
+	var buttonel=$(sss);
+	buttonel.addClass("disabled");
+	$.ajax({
+		type: "POST",
+		url: parseToURL("wp_signin","send_mail"),
+		data: {email:email,yanzhengma:yanzhengma,capkey:'newregister'},
+		success: function(response){
+			var json = $.parseJSON(response);
+			if (json.result == "ok") {
+				alert('验证码发送成功，请查收');
+				sms_time(sss);
+				$('#rand_rs_regsiter').siblings('img.securicode').triggerHandler("click");
+				$('#rand_rs_regsiter').val('');
+			}else if (json.result == 'error') {
+				buttonel.removeClass("disabled");
+				alert(json.errmsg);
+				$('#rand_rs_regsiter').siblings('img.securicode').triggerHandler("click");
+			}
+		},
+		error: function(xhr, textStatus, errorThrown){
+			buttonel.removeClass("disabled");
+			alert(xhr.readyState+','+xhr.status+' - '+(errorThrown||textStatus)+"(unbind_third_account).<br/>"+"请求失败");
+			return false;
+		}
+	});
+}
+
+function sms_renzheng(sss){
+	if($(sss).hasClass('disabled')) return;
+	var ipone = $("#user_mobile_").val();
+	var myreg = /^(((1[0-9]{2})|159|153)+\d{8})$/;
+	if(!myreg.test(ipone)){
+		alert('手机号格式不正确！');
+		$('.captcha_box a.captcha_sms_cancel').click();
+		$('#user_mobile_').focus();
+		return;
+	}
+
+	var yanzhengma = $("#rand_rs_regsiter").val();
+	if(yanzhengma == ''){
+		alert("请输入「验证码」");
+		$('#rand_rs_regsiter').focus();
+		return;
+	}
+
+	var buttonel=$(sss);
+	buttonel.addClass("disabled");
+	var capbut = $('a.input_ph_link.open_captcha');
+	capbut.addClass("disabled");
+	$.ajax({
+		type: "POST",
+		url: parseToURL("wp_signin","send_sms"),
+		data: {iphone:ipone,yanzhengma:yanzhengma,capkey:'newregister'},
+		success: function(response){
+			var json = $.parseJSON(response);
+			if (json.result == "ok") {
+				alert('短信发送成功！');
+				sms_time(sss);
+				$('#rand_rs_regsiter').siblings('img.securicode').triggerHandler("click");
+				$('#rand_rs_regsiter').val('');
+				if (capbut.length>0) {
+					$('.captcha_bbox').hide();
+					$('.captcha_floatlayerbg').hide();
+				}
+			}else if (json.result == 'error') {
+				buttonel.removeClass("disabled");
+				capbut.removeClass("disabled");
+				alert(json.errmsg);
+				$('#rand_rs_regsiter').siblings('img.securicode').triggerHandler("click");
+			}
+		},
+		error: function(xhr, textStatus, errorThrown){
+			buttonel.removeClass("disabled");
+			alert(xhr.readyState+','+xhr.status+' - '+(errorThrown||textStatus)+"(unbind_third_account).<br/>"+"请求失败");
+			return false;
+		}
+	});
+}
+
+function sms_time(o) {
+	var buttonel=$(o);
+	var capbut = $('a.input_ph_link.open_captcha');
+	if (wait == 0) {
+		buttonel.removeClass("disabled");
+		buttonel.html("获取验证码");
+		if (capbut.length > 0) {
+			buttonel.html("确定");
+			capbut.removeClass("disabled");
+			capbut.html("获取验证码");
+		}
+		wait = 60;
+    }else{
+		buttonel.addClass("disabled");
+		buttonel.html("重新发送(" + wait + ")");
+		capbut.addClass("disabled");
+		capbut.html("重新发送(" + wait + ")");
+		wait--;
+		setTimeout(function() {
+			sms_time(o)
+		},
+		1000)
+    }
+}
+$('#regiform img.securicode').css('visibility','hidden');
+setTimeout(function(){
+    $('#regiform img.securicode').css('visibility','');
+},1000);
+$(function(){
+    var thetimes=0;
+    $('img.securicode').filter(function(){return !$(this).closest('.forget').length}).each(function(){
+        var self=$(this);
+        setTimeout(function(){
+            self.attr('src',self.attr('data-imgsrc'))
+        },300*thetimes)
+        thetimes+=1;
+    });
+})
+$(window).load(function(){
+    var thetimes=0;
+    $('.forget img.securicode').each(function(){
+        var self=$(this);
+        setTimeout(function(){
+            self.attr('src',self.attr('data-imgsrc'))
+        },300*thetimes)
+        thetimes+=1;
+    });
+})
+</script>
+
+<script language="javascript">$(function(){
+	// 已注册
+	$('a.pagebuy').click(function(e){e.preventDefault();
+		$('.usignin-content').hide().filter('.pagesign').show();
+	});
+	// 验证码
+	$('img.securicode').click(function(){
+		var capkey = $(this).siblings('input[name="capkey"]').val()||'newsignin';
+		$(this).attr("src", parseToURL('wp_signin','captcha',{"capkey": capkey,"s": (new Date()).getTime()}));
+	});
+
+
+	// 动态码
+	$('input.getcode').click(function(e){
+		var yanzhengma = $('#captchayzm').val();
+		if(yanzhengma==''){
+			alert("请输入「验证码」");
+			return false;
+		}
+		var $phone = $('input[name="phone"]'),num = $.trim($phone.val()||'');
+		if (/^\+?\d{1,}[ \-0-9]+$/.test(num)) {
+			$.post(parseToURL('wp_signin','dyncode'),{"phone": num,yanzhengma:yanzhengma},function(response){
+				var data = $.parseJSON(response),result = data['result']||'';
+				if (result == 'error'){
+					alert(data.errmsg);
+					$('input[name="captchayzm"]').val("");
+					$('.user_quick_div img.securicode').triggerHandler("click");
+				}
+				else alert("动态校验码已发送至「#n#」，请及时查收".replace('#n#',num));
+				return false
+			}).error(function(xhr, status, thrown){
+				alert(xhr.readyState+','+xhr.status+' - '+(thrown||status));
+				return false;
+			});
+			var $btn = $(this),timeout = 30,timer;$btn.blur();
+			$btn.attr("disabled", 'disabled').css("color",'#a1a1a1').val(timeout+"秒后重发");
+			timer = setInterval(function(){timeout--;
+				if (timeout > 0) $btn.val(timeout+"秒后重发");
+				else {$btn.removeAttr("disabled").css("color",'#555').val("获取校验码");clearInterval(timer)}
+			}, 1000);
+		} else {alert("请输入合法的手机号码");$phone.select();return false}
+	});
+	// 登录按钮
+	$('a.login_submit').click(function(e){e.preventDefault();
+		var regarr = /\b(page|quick)type\b/.exec($(this).attr("class")||"");
+		var self=$(this);
+		if (regarr != null) {
+			var btntype = regarr[1];
+			if(btntype=='page'){
+				var logindiv=$(this).closest('.login');
+				var username=logindiv.find('input[name="user"]').val();
+				if($.trim(username)==''){
+					logindiv.find('.login_valid_txt .error').html("请输入邮箱/手机号");
+					logindiv.find('input[name="user"]').focus();
+					return;
+				}
+				var pass=logindiv.find('input[name="pswd"]').val();
+				if($.trim(pass)==''){
+					logindiv.find('.login_valid_txt .error').html("请输入密码");
+					logindiv.find('input[name="pswd"]').focus();
+					return;
+				}
+				var authinput=logindiv.find('input[name="captcha"]');
+				if(authinput.length&&$.trim(authinput.val())==''){
+					logindiv.find('.login_valid_txt .error').html("请输入验证码");
+					authinput.focus();
+					return;
+				}
+			}
+
+			var params = $(this).closest('.login').find('form[name="'+btntype+'form"]').serialize()+'&stype='+btntype;
+			if($.trim("").length) params += '&_q=';
+			if($.trim("http%3A%2F%2Fwd-shops-1293157-m.view.sitestar.cn%2Findex.php%3Fhdname%3D%26fxid%3D%26_m%3Dtb_shopping_cart%26_a%3DshowOrderInterface%26wproduct_paynum%3D1%26pid%3D56%26max_kc%3D99999%26fxid%3D0%26messtype%3D1%26contents%3D%26item_id%3D56%26prosku%3D").length) params += '&_b=http%3A%2F%2Fwd-shops-1293157-m.view.sitestar.cn%2Findex.php%3Fhdname%3D%26fxid%3D%26_m%3Dtb_shopping_cart%26_a%3DshowOrderInterface%26wproduct_paynum%3D1%26pid%3D56%26max_kc%3D99999%26fxid%3D0%26messtype%3D1%26contents%3D%26item_id%3D56%26prosku%3D';
+			$.post(parseToURL("wp_signin",'httpreq'), params, function(response){
+				var data = $.parseJSON(response),result = data['result']||'';
+				if (result == 'error') {
+					var capkey = data['capkey']||'';
+					self.closest('.login').find('.login_valid_txt .error').html(data.errmsg);
+					if (capkey == 'refresh') {
+						$('input[name="captcha"]').val("");
+						$('.user_login_div img.securicode').triggerHandler("click");
+					}
+					return false
+				} else if (result == 'ok') {
+                    var flag = 1;
+                    var refer = data['refer']||'http://wd-shops-1293157-m.view.sitestar.cn',frmstr = data['form']||'';
+                    if(location.href==refer){
+                        flag = 2;
+                        if(refer.indexOf('?')>=0) refer+='&_v='+(new Date()).getTime();
+                        else refer+='?_v='+(new Date()).getTime();
+                    }
+                    if (frmstr.length > 0) $(frmstr).appendTo("body").submit();
+                    else {
+                        if(flag == 1){
+                            var  redirect_link = '';
+                            if(redirect_link){
+                                refer = redirect_link;
+                            }
+                        }
+                        location.href = refer;
+                    }
+				    return false;
+
+				}else if(result == 'errlimit' ){
+                    var msg_1 = '密码错误次数太多，';
+                    var msg_2 = '请';
+                    var msg_3 = '分钟后重试';
+                    var limittime = data.errmsg;
+                    var msg = msg_1+msg_2+' '+limittime+' '+msg_3;
+                    self.closest('.login').find('.login_valid_txt .error').html(msg);
+                    return false
+                }else if(result == 'errRemain'){
+                    var msg_1 = '你还有';
+                    var msg_2 = '次机会尝试';
+                    var limittime = data.errmsg;
+                    var msg = msg_1+' '+limittime+' '+msg_2;
+                    self.closest('.login').find('.login_valid_txt .error').html(msg);
+                    return false
+                }
+			}).error(function(xhr, status, thrown){
+				alert(xhr.readyState+','+xhr.status+' - '+(thrown||status));
+				return false;
+			});
+		}
+	});
+	// 注册按钮
+	$LAB
+        .script("http://static.websiteonline.cn/website/script/jquery.validate.js")
+        .script("http://static.websiteonline.cn/website/script/validate_strongpwd.js")
+        .script("http://static.websiteonline.cn/website/script/webuploader/webuploader.js")
+        .wait(function(){
+            var getQueenItem=function (id){
+                    return $('.fileQueue_chooser_'+window.id).find('.uploadifyQueueItem').filter(function(){
+                        return this.id.match(new RegExp(id+'$'));
+                    })
+            }
+
+            var mimetypestr = '',mimetypearr = {
+                'pic' : 'image/png,image/jpg,image/jpeg,image/gif,.ico',
+                'mp3' : 'audio/mpeg',
+                'swf' : '.swf','rar' : '.rar',
+                'doc' : 'application/pdf,.doc,.docx,.ppt,.pptx,.odt,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+                'text' : 'text/plain,text/html'
+            };
+
+            var filetype = 'pic';//临时写死
+
+            if (filetype == 'all') {
+                for(var k in mimetypearr){
+                    if ($.inArray(k, ['swf','rar']) != -1) continue;
+                    mimetypestr += mimetypearr[k]+',';
+                }
+                mimetypestr = mimetypestr.replace(/,$/, '');
+			} else mimetypestr = mimetypearr[filetype];
+			if(filetype=='pic'){
+				var useragent=navigator.userAgent;
+				if(useragent.match(/micromessenger/i)){
+					mimetypestr ='image/*';
+				}
+			}
+        //WebUploader 上传插件初始化
+        var uploader;
+        uploader = WebUploader.create({
+            auto: false,
+            swf: 'http://static.websiteonline.cn/website/script/webuploader/Uploader.swf',
+            server: parseToURL('wp_frontpage','locale_users_uploadify'),
+            pick: {id:'.user_pic_upload',multiple:false},
+            formData:{fileType:'ico|gif|jpg|jpeg|png',maxFileSize: '2097152'},//文件上传请求的参数表，每次发送都会发送此对象中的参数。
+            fileVal:'Filedata',
+            // 不压缩image, 默认如果是jpeg，文件上传前会压缩一把再上传！
+            resize: false,
+            //fileNumLimit:10,//验证文件总数量, 超出则不允许加入队列。（Q_EXCEED_NUM_LIMIT）
+            //fileSingleSizeLimit: 2 * 1024 * 1024,// 验证单个文件大小是否超出限制, 超出则不允许加入队列（F_EXCEED_SIZE）
+            // 只允许选择图片文件。
+            accept: {
+                title: 'Images',
+                extensions: 'gif,jpg,jpeg,bmp,png',
+                mimeTypes: mimetypestr
+            },
+            thumb:{
+                width: 40,
+                height: 40,
+                quality: 70,// 图片质量，只有type为`image/jpeg`的时候才有效。
+                allowMagnify: true, // 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
+                crop: true,// 是否允许裁剪。
+                //type: 'image/jpeg'// 为空的话则保留原有图片格式。// 否则强制转换成指定的类型。
+            },
+            //compress: false,
+            compress: {
+                width: 1600,
+                height: 1600,
+
+                // 图片质量，只有type为`image/jpeg`的时候才有效。
+                quality: 90,
+
+                // 是否允许放大，如果想要生成小图的时候不失真，此选项应该设置为false.
+                allowMagnify: false,
+
+                // 是否允许裁剪。
+                crop: false,
+
+                // 是否保留头部meta信息。
+                preserveHeaders: true,
+
+                // 如果发现压缩后文件大小比原来还大，则使用原来图片
+                // 此属性可能会影响图片自动纠正功能
+                noCompressIfLarger: false,
+
+                // 单位字节，如果图片大小小于此值，不会采用压缩。超过2M压缩
+                compressSize: 2097152
+            },
+            duplicate:true
+        });
+        // 开始上传
+        //$('.submitbtn').click(function(){
+        //    uploader.upload();
+        //});
+
+        // 当文件被加入队列之前触发，此事件的handler返回值为false，则此文件不会被添加进入队列。
+        uploader.on( 'beforeFileQueued', function( file ) {
+            var itemData = {
+                'fileID'     : file.id,
+                'instanceID' : file.id,
+                'fileName'   : file.name,
+                'fileSize'   : WebUploader.formatSize(file.size),
+                'cancelpng'   : "http://static.websiteonline.cn/website/script/multiupload/cancel.png",
+                'className'   : 'uploadifyQueueItem'
+            }
+            // Create the file item template
+            var itemTemplate = '<div id="${fileID}" class="${className}">\
+                <div class="cancel">\
+                    <a class="WebupRemove" href="jQuery:$(\'#${instanceID}\').uploadifyCancel(\'cancel\', \'${fileID}\')" onclick="return false;"><img src="${cancelpng}" border="0" /></a>\
+                </div>\
+                <img style="width:48px;height:48px;margin-right:3px;" class="${fileID}"><span class="fileName">${fileName} (${fileSize})<span>，超过2M会自动压缩</span></span><span class="percentage"></span>\
+                \
+            </div>';
+
+            // Replace the item data in the template
+            var itemHTML = itemTemplate;
+            for (var d in itemData) {
+                itemHTML = itemHTML.replace(new RegExp('\\$\\{' + d + '\\}', 'g'), itemData[d]);
+            }
+
+            // Add the file item to the queue
+            var $chooser = $('.fileQueue_chooser_'+window.id);
+            var oldfileid = $chooser.find(".uploadifyQueueItem").attr("id");
+            if($chooser.children().length){
+                var queen_exitfile = uploader.getFile(oldfileid);
+                if(queen_exitfile) uploader.removeFile(queen_exitfile,true);
+                $chooser.empty(itemHTML);
+            }
+            $chooser.append(itemHTML);
+            $chooser.siblings('.user_pic_upload').children('.webuploader-pick').find('.webuploader-pick_txt').html('已选择1张图片');
+            if ($chooser.children('.jscroll-c').length) $chooser = $chooser.children('.jscroll-c');
+            //console.log('allfile:',uploader.getFiles());//队列中的记录还在其实已经删除了
+            //console.log('onefile:',uploader.getFile('WU_FILE_0'));//undefined
+        });
+        var required_pic_post_f = '';
+        var choose_pic_post_f = '';
+        //当文件被加入队列以后触发
+        uploader.on( 'fileQueued', function( file ) {
+            //图片加入队列后生成缩略图
+            uploader.makeThumb( file, function( error, src ) {
+                if ( error ) {
+                    $("."+file.id).replaceWith('<span>不能预览</span>');
+                    return;
+                }
+                $("."+file.id).attr( 'src', src );
+            }, 1, 1 );
+            //Remove item
+            $('#'+file.id+' a.WebupRemove').click(function(){
+                var oldname = $(this).parents('.filequeue').siblings('.uppic_hidden').attr('field_name');
+                $(this).parents('.filequeue').siblings('.user_pic_upload').children('.webuploader-pick').find('.webuploader-pick_txt').html(oldname);
+                $('#'+file.id).remove();
+                uploader.removeFile(file,true);
+            });
+
+        })
+        // 文件上传过程中创建进度条实时显示。
+//        uploader.on( 'uploadProgress', function( file, percentage ) {
+//            var $li = $( '#'+file.id ),
+//            $percent = $li.find('.uploadifyProgressBar');
+//            $percentTxt = $li.find('.percentage');
+//            // 避免重复创建
+//            if ( !$percent.length ) {
+//                //$percent = $('<p class="progress"><span></span></p>').appendTo( $li ).find('span');
+//            }
+//            var per_width = Math.round(percentage * 100) + '%'
+//            $percent.css( 'width', per_width );
+//            $percentTxt.html(' - ' + per_width);
+//            if(percentage==1) $percentTxt.html(" - Completed");
+//        });
+
+        //当validate不通过时，会以派送错误事件的形式通知调用者
+        uploader.on('error', function(file,max,fileobj){
+            if(file=='F_EXCEED_SIZE'){   //验证单个文件大小  fileSingleSizeLimit
+                var uploadsize= max/1024/1024;
+                getQueenItem(fileobj.id).find('.percentage').css('color','red').html(" - 文件大小不能超过"+((uploadsize>=1?uploadsize+'MB':uploadsize*1024+"KB")));
+            }else if(file=='Q_EXCEED_NUM_LIMIT'){ //验证文件总数量 fileNumLimit
+                $('#'+fileobj.id).remove();
+                uploader.removeFile(fileobj,true);
+            }else if(file=='Q_TYPE_DENIED'){ //验证类型 Q_TYPE_DENIED
+                getQueenItem(max.id).find('.percentage').css('color','red').html(" - 非法的上传类型");
+            }
+            //Remove item
+            $('#'+fileobj.id+' a.WebupRemove').click(function(){
+                $('#'+fileobj.id).remove();
+                //uploader.removeFile(fileobj,true);
+            });
+
+        });
+
+        // 文件成功、失败处理
+        uploader.on( 'uploadSuccess', function( file,result ) {
+            var fname = result.fname;
+            $("#"+file.id).parent().next("input:hidden").val(fname);
+            if(result.result=='ERROR'){
+                var $li = $( '#'+file.id ),
+                $percent = $li.find('.percentage');
+                $percent.css('color','red').html(' - '+ result.errmsg);
+            }
+        });
+
+        uploader.on( 'uploadError', function( file ) {
+            alert('上传失败！');
+            var $li = $( '#'+file.id ),
+            $percent = $li.find('.percentage');
+            $percent.css('color','red').html(' - '+ '上传失败！');
+        });
+
+        uploader.on( 'uploadComplete', function( file ) {
+            //图片类必填项图片是否全部上传
+            $('#regiform').find(".uppic_hidden").each(function(){
+                var is_required = $(this).attr("required");
+                var imgstr = $(this).val();
+                if(is_required){
+                    if(imgstr == ''){
+                        required_pic_post_f = false;
+                        return false;
+                    }else{
+                        required_pic_post_f = true;
+                    }
+                }
+            })
+            //选择上传的图片是否全部上传
+            $('#regiform').find(".filequeue").each(function(){
+                var uppic_hidden_node = $(this).siblings('.uppic_hidden');
+                var is_choose_pic = $(this).html();
+                var imgstr2 = uppic_hidden_node.val();
+                if(is_choose_pic !=''){
+                    if(imgstr2 == ''){
+                        choose_pic_post_f = false;
+                        return false;
+                    }else{
+                        choose_pic_post_f = true;
+            }
+                }
+            })
+
+
+            if(choose_pic_post_f){
+                $('.register_submit').click();
+            }
+            // alert('上传完成';
+            //$( '#'+file.id ).find('.uploadifyProgress').remove();
+        });
+		jQuery.extend(jQuery.validator.messages, {
+			required: "字段不能为空！",
+			dateISO: "非法输入！"
+		});
+		jQuery.validator.addMethod("isMobile", function(value, element) {
+			var length = value.length;
+			var mobile = /^((1[0-9]{2})|159|153)+\d{8}$/;
+			///^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+			return this.optional(element) || (length == 11 && mobile.test(value));
+		}, "非法输入！");
+		$('#regiform').validate({
+			onkeyup: false,onclick: false,
+			rules: {
+				'user[passwd]': {required: true,minlength: 5},
+'user[re_passwd]': {required: true,minlength: 5},				'user[email]': {email: true,remote:parseToURL('wp_signin','checkemail')},
+				'user[mobile]':{digits:true,remote:parseToURL('wp_signin','checkmobile'),minlength: 6,isMobile:true}
+			},messages: {
+				'user[passwd]': {required: '请输入密码！',minlength: '密码必须大于4个字符'},
+'user[re_passwd]': {required: '请重新输入密码以确认！',minlength: '密码必须大于4个字符'},				'user[email]':{
+					required: "请输入电子邮件地址！",
+					email: "非法输入！",
+					remote:'邮箱已经被注册！'
+				},
+				'user[mobile]':{
+					digits: '非法输入！',
+					minlength: '非法输入！',
+					isMobile: '非法输入！',
+					remote:'手机号已经被注册！'
+				}
+			},errorPlacement: function(error, element){
+				element.closest('.form_element').find('.valid_txt').append(error);
+			},submitHandler: function(){
+				var agree_check = $('.agree_check');
+				if(agree_check.length>0){
+					var check_val = $('.agree_check').parent('span').attr('class');
+					if(check_val.indexOf('checked')<0){
+						alert('您还未同意用户协议！');
+						return false;
+					}
+				}
+				var cur_locale = 'zh_CN';
+				if(cur_locale == 'zh_CN'){
+				var iphone = $("#user_mobile_").val();
+				var myreg = /^(((1[0-9]{2})|159|153)+\d{8})$/;
+					if(iphone&&!myreg.test(iphone)){
+						alert("手机号格式不正确！");
+						$('#user_mobile_').focus();
+						return;
+					}
+				}
+
+				var email = $("#user_email_").val();
+				var myregs = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+				if(email&&!myregs.test(email)){
+					alert('电子邮件地址错误');
+					$('#user_email_').focus();
+					return;
+				}
+
+
+				var pwd = $('#user_passwd_').val(),repwd = $('#user_re_passwd_').val();
+				if (pwd != repwd){alert("密码不匹配！");return false}
+				var $capcode = $('input#rand_rs_regsiter');
+				if ($capcode.length && ! $.trim($capcode.val()||"").length) {
+					//alert("请输入「验证码」");$capcode.focus();return false;
+				}
+				var params = $('#regiform').serialize()+'&stype=regi';
+				if($.trim("").length) params += '&_q=';
+				if($.trim("http%3A%2F%2Fwd-shops-1293157-m.view.sitestar.cn%2Findex.php%3Fhdname%3D%26fxid%3D%26_m%3Dtb_shopping_cart%26_a%3DshowOrderInterface%26wproduct_paynum%3D1%26pid%3D56%26max_kc%3D99999%26fxid%3D0%26messtype%3D1%26contents%3D%26item_id%3D56%26prosku%3D").length) params += '&_b=http%3A%2F%2Fwd-shops-1293157-m.view.sitestar.cn%2Findex.php%3Fhdname%3D%26fxid%3D%26_m%3Dtb_shopping_cart%26_a%3DshowOrderInterface%26wproduct_paynum%3D1%26pid%3D56%26max_kc%3D99999%26fxid%3D0%26messtype%3D1%26contents%3D%26item_id%3D56%26prosku%3D';
+
+
+				//检查图片类必填项，的图片是否加入队列
+				var has_re_pic_upload = $('#regiform .uppic_hidden[required]').length;
+				if(has_re_pic_upload && !required_pic_post_f){
+					var requiredpic_add_queen = '';
+					$('#regiform').find(".uppic_hidden").each(function(){
+						var is_required = $(this).attr("required");
+						if(is_required){
+							var is_add_queen = $(this).siblings('.filequeue').html();
+							var imgstr_name = $(this).attr('field_name');
+							if(is_add_queen == ''){
+								requiredpic_add_queen = false;
+								alert(imgstr_name+'字段不能为空！');
+								return false;
+							}else{
+								requiredpic_add_queen = true;
+							}
+						}else{
+							requiredpic_add_queen = true;
+						}
+					})
+					if(requiredpic_add_queen){
+						uploader.upload();
+					}else{
+						return false;
+					}
+					return; //图片类必填项，选择上传的图片是否全部上传
+				}
+				var has_pic_upload = $('#regiform').find(".user_pic_upload").length;
+				//图片上传类的非必填项是否选择了图片
+				var has_file_inqueen = '';
+				if(has_pic_upload){
+					$('#regiform').find(".uppic_hidden").each(function(){
+						has_file_inqueen = $(this).siblings('.filequeue').html();
+						if(has_file_inqueen !=''){
+							has_file_inqueen = true;
+							return false;
+						}
+					})
+				}
+				//图片类只有非必填项时的上传
+				if(has_pic_upload && !has_re_pic_upload && !choose_pic_post_f && has_file_inqueen){
+					if(has_file_inqueen) uploader.upload();
+					return;
+				}
+				$.post(parseToURL('wp_signin','httpreq'),params,function(o_result){
+					var data = $.parseJSON(o_result),result = data.result||"";
+					if (result == "error") {
+						$('input#rand_rs_regsiter').val("")
+						.siblings('img.securicode').triggerHandler("click");
+						alert(data.errmsg);return false;
+					} else if (result == "ok") {
+						var refer = data['refer']||'http://wd-shops-1293157-m.view.sitestar.cn',frmstr = data['form']||'';
+						if(location.href==refer){
+							if(refer.indexOf('?')>=0) refer+='&_v='+(new Date()).getTime();
+							else refer+='?_v='+(new Date()).getTime();
+						}
+												if (frmstr.length > 0) $(frmstr).appendTo("body").submit();
+						else{ alert("\u6ce8\u518c\u6210\u529f"); location.href = refer; }
+					} else alert("请求失败");
+				}).error(function(xhr, status, thrown){
+					alert(xhr.readyState+','+xhr.status+' - '+(thrown||status));
+					return false;
+				});
+			}
+		});
+		$('a.register_submit').click(function(e){e.preventDefault();$('#regiform').triggerHandler('submit')});
+	});
+})</script>
+	<script type="text/javascript">
+		$(function(){
+
+			$('.selphoto').click(function(){
+				var heights = $(window).height()
+				var widths = $(window).width()
+				$('.suoping').css({width:$(document).width(),height:$(document).height(),display:'block'})
+				var lefts = parseInt((widths-$('#wp-wevote_addopts').width())/2)
+				var tops = parseInt((heights-$('#wp-wevote_addopts').height())/2)
+				$('#wp-wevote_addopts').css({left:lefts+'px',top:tops+'px',display:'block'})
+			})
+			$('.headphotolist li img').click(function(){
+				$('.headphotolist li img').removeClass('bordercol');
+				$(this).addClass('bordercol');
+			})
+			$('#btnsave').click(function(){
+				var bordercollen = $('.headphotolist .bordercol').length;
+				if(bordercollen == 0){
+					alert('请选择头像');
+					return false;
+				}
+				var imgid = $('.headphotolist .bordercol').attr('photoid');
+				var imgstr = "http://static.websiteonline.cn/website/template/default/images/headphoto/"+imgid+".jpg"
+				$('.userhead img').attr('src',imgstr)
+				$('#user_re_headphoto_').val(imgid);
+				$('#wp-wevote_addopts').css({display:'none'})
+				$('.suoping').css({display:'none'})
+			})
+		})
+	</script>
+<!-- 以下由lyc添加 -->
+<div class="suoping" style="display:none;z-index: 100; width: 1366px; height: 353px;background-color: #000;left: 0;top:0px;filter:alpha(opacity=25);-moz-opacity:0.25;-khtml-opacity:0.25;opacity: 0.25;position: fixed;">
+	</div>
+<div class="frontbg" style="display:none;z-index: 888; width: 100%; height: 100%;background-color: #151515;left: 0;top:0px;filter:alpha(opacity=82);-moz-opacity:0.82;-khtml-opacity:0.82;opacity: 0.82;position: fixed;">
+	<div class="closebtn"><a href="javascript:;"></a></div>
+</div>
+
+<style>
+.clear{clear:both; height:0px; font-size:0px;overflow:hidden; display:block; font-size:0px;}
+.clearfix:after {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+.clearfix {display: inline-table; height: 1%; display: block;}
+
+.left{ float:left;}
+.right{ float:right;}
+.hide{display:none; z-index:0;}
+.show{display:block; z-index:5;}
+.active{ display:block; z-index:10}
+input,label,textarea{font-family:'Microsoft YaHei'; padding:0;margin: 0;}
+input[placeholder], [placeholder], *[placeholder] { 
+color:#b5b5b5; 
+} 
+#choose_iframe .login_but{font-size:12px;}
+.send.login_but{font-size:12px;margin: 0px;}
+#frame_container,#forgetsecond,#forgetsecondnew,#forgetthird,#choose_iframe,#wx_container,#wx_input_name,#wx_input_code{display:none; position:absolute; top:50%; left:50%; z-index:999; margin-top:-150px; margin-left:-145px; background-color:#EBE9E8; border-radius:20px;}
+.comformb { position:relative; font-size:14px;width:300px; margin:0 auto;padding:30px 0;}
+.comformb h2{ font-size:21px; color:#eb6100; text-align:center; margin-bottom:10px; line-height:30px;}
+.comformb .logInfo { margin-top:25px;}
+.comformb .logInfo ul li{ width:200px; margin:0 50px; margin-bottom:15px; position:relative; font-size:14px;}
+.comformb .logInfo ul li .ib{ background:#FFF; border:none; width:200px; height:35px;line-height:35px;font-size:14px;color:#626262; padding-left:12px;border-radius:3px;-moz-border-radius:3px;-weblik-border-radius:3px;}
+.comformb .logInfo ul li .ib.y1{ padding-left:85px; width:200px;}
+.comformb .logInfo ul li .ib.y2{ width:149px; float:left; padding-left:12px;}
+.comformb .logInfo ul li .send{ display:block; width:50px; float:left; background:#eb6100;height:35px; line-height:35px; color:#FFF; text-align:center;border-top-right-radius:3px;-moz-border-top-right-radius:3px;-weblik-border-top-right-radius:3px;border-bottom-right-radius:3px;-moz-border-bottom-right-radius:3px;-weblik-border-bottom-right-radius:3px;}
+.comformb .logInfo ul li .yzsite{ position:absolute; left:10px; top:9px;line-height:35px; color:#b5b5b5;}
+.comformb .logInfo ul li .yzsite{ width:65px; height:18px;}
+.comformb .logInfo ul li p{ color:#6e6e6e;}
+.comformb .logInfo ul li p.errortip{ color:#eb6100; font-size:14px; width:200px; text-align:left; line-height:1.2em; margin-top:6px; margin:0 auto;}
+.login .logInfo ul li p.errortip{ text-align:center;}
+.forget .logInfo ul li p.errortip{ text-align:center;}
+.comformb .logInfo ul li .submitbtn{ width:200px;height:35px;background:none; border:none; background:#eb6100; color:#FFF; border-radius:3px;-moz-border-radius:3px;-weblik-border-radius:3px;cursor:pointer; letter-spacing:2px;font-size:16px;}
+.comformb.login .logInfo ul li .submitbtn,.comformb.register .logInfo ul li .submitbtn{letter-spacing:8px;} 
+.comformb .formplate.remword{ width:95px; margin:0 auto;}
+.comformb .formplate.remword label{ cursor: pointer; padding-left:6px;}
+.comformb .formplate.remword .fp-checkbox {background:#FFF;border:none;}
+.comformb .formplate.remword .fp-checkbox.checked{ border:none;background:#fff url(../images/iconcheck01.png) center center no-repeat;}
+.comformb .thirdparty_list { text-align:center;margin:0 auto; margin-top:20px;}
+.comformb .thirdparty_list a{width:35px; height:35px; display:inline-block; background:url(../images/iconthird.png) -3px 0 no-repeat; margin:0 2px;}
+.comformb .thirdparty_list a.wblg_item{ background-position:-47px 0;}
+.comformb .thirdparty_list a.wxlg_item{ background-position:-90px 0;}
+.comformb .thirdparty_list a.qqlg_item:hover{background-position:-3px -42px;}
+.comformb .thirdparty_list a.wblg_item:hover{background-position:-47px -42px;}
+.comformb .thirdparty_list a.wxlg_item:hover{background-position:-90px -42px;}
+.comformb .alink { width:200px; margin:0 auto; overflow:hidden; margin-top:20px;text-align:center;}
+.comformb .alink a{ color:#626262;display:inline-block; width:99px; text-align:center; line-height:1.4em; font-size:14px;border-left:1px solid #bfbfbf; }
+.comformb .alink a.first{ border-left:none;}
+.comformb .alink a:hover{ text-decoration:underline;}
+.comformb .alink a.center{ margin:0 auto; float:none;}
+.closebtn {position: absolute;top: 0; right: 0; width: 100px; height: 100px; z-index: 6; overflow: hidden;}
+.closebtn a {display: block;width: 100%;height: 100%;background: url(/template/default/images/close_btn.png) center center no-repeat;
+    filter: alpha(opacity=100);-moz-opacity: 1; opacity: 1;}
+/* wx way forget*/
+.forget .logInfo .txt{ width:200px; margin:0 auto;  color: #626262; text-align:center;}
+.forget .logInfo .txt p{ margin-bottom:20px; font-size:15px}
+.forget .logInfo a{ display:inline-block; width:160px; margin:0 auto; color:#FFF; background:#eb6100; line-height:35px; height:35px;border-radius:3px;-moz-border-radius: 3px; -weblik-border-radius: 3px;}
+.forget .logInfo a.email{ margin-bottom:12px;}
+</style>
+<!--by mail-->
+<div id="frame_container" class="whiteformbg"> 
+    <div class="comformb forget">
+        <h2>忘记密码</h2>
+        <form id="forgetform" action="#">
+        	<input type="hidden" name="c_type" value="email">
+            <div class="logInfo">
+                <ul>
+                    <li><input type="text" name="user_name" placeholder="电子邮箱" class="ib"></li>
+                                        <li><p class="errortip status"></p></li>
+                    <li><input type="submit" class="submitbtn form_submit login_but" name="submit" value="下一步"></li>
+                </ul>
+            </div>
+        <input type="hidden" name="token" value="3GazOEiCSf">
+        </form>
+        <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of login-->
+</div><!--end of whiteformbg-->
+
+<div id="forgetsecond" class="whiteformbg"> 
+    <div class="comformb forget">  
+        <h2>忘记密码</h2>
+        <form id="forgetform" action="#">
+            <div class="logInfo">
+                <ul>
+                    <li><p>需验证身份，请获取验证码</p></li>
+                    <li><p class="values"><span class="one">验证号码</span>:<span class="two"></span></p></li>
+
+					 <li>
+                        <div id="yzmshow4" class="yzsite"><img src="login_files/index.jpeg" data-imgsrc="http://wd-shops-1293157-m.view.sitestar.cn/index.php?capkey=forgetpwdend&amp;s=2AZbFk&amp;_m=userlogin&amp;_a=captcha" class="securicode"></div>
+                        <input type="text" name="rand_rsend" id="rand_rsend" placeholder="" class="ib y1">
+                        <input type="hidden" name="capkey" value="forgetpwdend">
+                    </li>
+
+                    <li class="clearfix"><input type="text" name="forgetpwd_code" placeholder="" class="ib y2 forgetpwdcode">
+                    <input type="button" onclick="send_email_code(this)" value="发送" class="send forget_send_submit login_but">
+                    </li>
+
+					
+
+
+                    <li><p class="errortip status"></p></li>
+                    <li><input type="submit" class="submitbtn form_submit login_but" name="submit" value="下一步"></li>
+                </ul>
+            </div>
+            <input type="hidden" name="nextat" value="second">
+            <input type="hidden" name="token" class="token" value="">
+            <input type="hidden" name="ctype" class="ctype" value="">
+            <input type="hidden" name="sendmail" class="sendmail" value="">
+        </form>
+       <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of comformb-->
+</div><!--end of whiteformbg-->
+
+<div id="forgetsecondnew" class="whiteformbg"> 
+    <div class="comformb forget">  
+        <h2>忘记密码</h2>
+        <form id="forgetform" action="#">
+            <div class="logInfo">
+                <ul>
+                    <li><p>需验证身份，请获取验证码</p></li>
+                    <li><p class="values"><span class="one">验证号码</span>:<span class="two"></span></p></li>
+					 <li>
+                        <div id="yzmshow4" class="yzsite"><img src="login_files/index_002.jpeg" data-imgsrc="http://wd-shops-1293157-m.view.sitestar.cn/index.php?capkey=forgetpwdend&amp;s=JO6d5e&amp;_m=userlogin&amp;_a=captcha" class="securicode"></div>
+                        <input type="text" name="rand_rsend" id="rand_rsend" placeholder="" class="ib y1">
+                        <input type="hidden" name="capkey" value="forgetpwdend">
+                    </li>
+                    <li class="clearfix"><input type="text" name="forgetpwd_code" placeholder="" class="ib y2 forgetpwdcode">
+                    <a href="javascript:;" class="send forget_send_submit login_but" data="0">发送</a>
+                    </li>
+                    <li><p class="errortip status"></p></li>
+                    <li><input type="submit" class="submitbtn form_submit login_but" name="submit" value="下一步"></li>
+                </ul>
+            </div>
+            <input type="hidden" name="nextat" value="second">
+            <input type="hidden" name="token" class="token" value="">
+            <input type="hidden" name="ctype" class="ctype" value="">
+            <input type="hidden" name="sendmail" class="sendmail" value="">
+        </form>
+       <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of comformb-->
+</div><!--end of whiteformbg-->
+
+<div id="forgetthird" class="whiteformbg"> 
+    <div class="comformb forget">  
+        <h2>忘记密码</h2>
+        <form id="forgetform" action="#">
+            <div class="logInfo">
+                <ul>
+                    <li><p>你正在找回的用户名:</p><p class="name"></p></li>
+                    <li><input type="password" name="passwd" placeholder="新密码" class="ib"></li>
+                    <li><input type="password" name="passwd_confrim" placeholder="确认新密码" class="ib"></li>
+                    <li><p class="errortip status"></p></li>
+                    <li><input type="submit" class="submitbtn form_submit login_but" name="submit" value="确定"></li>
+                </ul>
+            </div>
+            <input type="hidden" name="nextat" value="third">
+            <input type="hidden" name="token" value="" class="third_token">
+            <input type="hidden" name="ctype" value="" class="ctype">
+        </form>
+       <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of comformb-->
+</div><!--end of whiteformbg-->
+
+<div id="choose_iframe" class="whiteformbg"> 
+    <div class="comformb forget">  
+        <h2>忘记密码</h2>
+            <div class="logInfo">
+                <div class="txt">
+                   <p>请选择密码找回方式</p>
+                   <a href="javascript:;" class="email login_but" id="FindByEmail">
+                    通过邮件</a>
+                   <a href="javascript:;" id="FindByWeixin" class="login_but">通过微信</a>
+                </div>
+            </div>
+       <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of comformb-->
+</div><!--end of whiteformbg-->
+
+<div id="wx_input_name" class="whiteformbg"> 
+    <div class="comformb forget">  
+        <h2>忘记密码</h2>
+        <form id="forgetform" action="#">
+            <div class="logInfo">
+                <ul>
+                    <li><input type="text" id="WX_username" name="user_name" placeholder="用户名" class="ib"></li>
+<!--                     <li> -->
+<!--                         <div id="yzmshow3" class="yzsite"><img src=""></div> -->
+<!--                         <input type="text" name="rand_rs" id="rand_rs3" placeholder="" class="ib y1"> -->
+<!--                         <input type="hidden" name="capkey" value="forgetpwd"/> -->
+<!--                     </li> -->
+                    <li><p class="errortip status"></p></li>
+                    <li><input type="button" class="submitbtn form_submit login_but" name="submit" value="下一步"></li>
+                </ul>
+            </div>
+            <input type="hidden" name="token" class="token" value="3GazOEiCSf">
+        </form>
+       <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of comformb-->
+</div><!--end of whiteformbg-->
+
+<div id="wx_input_code" class="whiteformbg"> 
+    <div class="comformb forget">  
+        <h2>忘记密码</h2>
+        <form id="forgetform" action="#">
+            <div class="logInfo">
+                <ul>
+<!--                    <li><input type="text" id="WX_username" name="user_name" placeholder="用户名" class="ib"></li>-->
+                    <li><p>用户名:<span class="names"></span></p></li>
+                    <li class="clearfix"><input id="WX_yanzheng" type="text" name="" placeholder="请输入验证码" class="ib y2">
+                    	<input type="button" class="send login_but" onclick="sms_renzhengs(this)" value="发送">
+                    </li>
+                    <li><p class="errortip status"></p></li>
+                    <li><input type="submit" class="submitbtn form_submit login_but" name="submit" value="下一步"></li>
+                </ul>
+            </div>
+            <input type="hidden" name="token" value="" class="token_s">
+            <input type="hidden" name="WX_username" id="WX_username" value="">
+        </form>
+       <div class="alink"><a href="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&amp;_a=entrance" class="first ulreg_titletxt">会员登录</a></div>
+    </div><!--end of comformb-->
+</div><!--end of whiteformbg-->
+<script>
+	function shows(vals){
+		$('.frontbg,#frame_container,#choose_iframe,#forgetsecond,#forgetsecondnew,#forgetthird,#wx_input_name,#wx_input_code').hide();
+		if(vals != ''){
+			$(vals).show();
+		}
+	}
+	function sms_renzhengs(sss){
+//         if($(sss).hasClass('disabled')) return;
+		var username = $('#wx_input_code #WX_username').val(),errorstip = $('#wx_input_code #forgetform .status');
+		if(username == ''){
+			errorstip.html("请填写用户名");
+			$('#wx_input_code #WX_username').focus();
+			return false;
+		}
+    	var buttonel=$(sss);
+		buttonel.addClass("disabled");
+		$.ajax({
+			type: "POST",
+			url: parseToURL("wp_signin","send_weixin"),
+			data: {username:username},
+			success: function(response){
+				var json = $.parseJSON(response);
+				if (json.result == "OK") {
+					errorstip.html("验证码已发送到与此用户绑定的微信账号上！");
+//                     $('#wx_input_code #forgetform #WX_yanzheng').removeAttr('readonly').removeAttr('style');
+					sms_times(sss);
+				}else{
+					errorstip.html(json.errmsg);
+					$('#wx_input_code #WX_username').focus();
+				}
+			},
+			error: function(xhr, textStatus, errorThrown){
+				alert(xhr.readyState+','+xhr.status+' - '+(errorThrown||textStatus)+"(unbind_third_account).<br/>"+"请求失败");
+				return false;
+			}
+		});
+	}
+
+	var wait = 60;
+	function sms_times(o) {
+		if (wait == 0) {
+			o.removeAttribute("disabled");         
+			o.value="发送";
+			wait = 60;
+		}else{
+			//o.setAttribute("disabled", true);
+            o.css("cursor","pointer");
+			o.value=  wait + "秒";
+			wait--;
+			setTimeout(function() {
+				sms_times(o)
+			},
+			1000)
+		}
+	}
+
+	function send_email_code(e){
+
+		//event.preventDefault(e);
+		if($.trim($('#forgetsecond').find('input[name=rand_rsend]').val())==''){
+			$('#forgetsecond').find('input[name=rand_rsend]').addClass('error').focus();
+            return;
+        }
+			
+		var formel=$('#forgetsecond #forgetform');
+		formel.find('.text_input.error').removeClass('error');
+		formel.find('.status').removeClass('error').html('发送中...').show();
+		var param = 'token=3GazOEiCSf&nextat=sendto&s='+new Date().getTime()+'&ctype='+$('.ctype').val()+'&needyanzheng=1&rand_rsend='+$('#rand_rsend').val()+'&capkey=forgetpwdend'+'&sendmail='+$('.sendmail').val();
+		$.post(parseToURL('wp_signin','check_forgetpwd'),param ,function(o_result) {
+			o_result=$.parseJSON(o_result);
+			if (o_result.result == "ERROR") {
+				if(o_result.errmsg=='Session expire!'){location.reload();return false; }
+				formel.find('.status').addClass('error').html(o_result.errmsg).show();
+
+				var captcha=$('#yzmshow4 img');
+	            captcha.triggerHandler('click');
+				return false;
+			} else if (o_result.result == "OK") {
+				sms_times(e);
+
+				formel.find('.status').removeClass('error').html(o_result.info).show();
+				return false;
+			} else {
+				alert('请求失败'); 
+			}
+		}).error(function() {
+				alert('请求失败'); 
+		});
+	}
+
+	
+	$(function(){
+// 		通过邮件/微信找回密码
+		$('#FindByEmail').click(function(){
+			shows('.frontbg,#frame_container');
+		})
+		$('#FindByWeixin').click(function(){
+			shows('.frontbg,#wx_input_name');
+		})
+		
+// 		通过邮件/短信找回显示的第一步；
+		$('.forgetpwd').click(function(){
+							shows('.frontbg,#frame_container');
+					})
+
+// 		关闭窗口
+		$('.closebtn').click(function(){
+			shows();
+		})
+
+		$('#frame_container #forgetform').submit(function(event){
+        	event.preventDefault();
+        	$(this).find('.text_input.error').removeClass('error');
+       	 	var username=$(this).find('input[name=user_name]').val();
+        	if($.trim(username)==''){
+                $(this).find('input[name=user_name]').addClass('error').focus();
+                return;
+        	}
+        	        	var param=$(this).serialize();
+        	var formel=$(this);
+        	formel.find('.status').html('加载中...').show();
+	        $.post(parseToURL('wp_signin','check_forgetpwd'),param ,function(o_result) {
+	            o_result=$.parseJSON(o_result);
+	            if (o_result.result == "ERROR") {
+	                    if(o_result.errmsg=='Session expire!'){location.reload();return false; }
+	                    formel.find('.status').addClass('error').html(o_result.errmsg).show();
+	                    var captcha=$('#yzmshow3 img');
+	                    captcha.triggerHandler('click');
+	                    return false;
+	           } else {
+	                   formel.find('.status').removeClass('error').html('').show();
+	                   if(o_result.step=='stepsecond'){
+			                //   if(oresult.result == 'OK'){
+				                	   $('#frame_container,#forgetthird').hide();
+				                	   $('#forgetsecondnew').show();
+				                	   $('#forgetsecondnew .values span.two').html(username);
+									   $('#forgetsecondnew').find('.forgetpwdcode').attr('placeholder','请输入验证码');
+								       $('.token').val('email');
+									 	$('.ctype').val('email');
+									 	$('.sendmail').val(username);
+                           /**
+$.post(parseToURL('wp_signin','forgetpwd_second'),param,function(oresult){
+			                   oresult = $.parseJSON(oresult);
+                       return false;
+			                   if(oresult.result == 'OK'){
+				                   if(oresult.c_step == 'two'){
+				                	   $('#frame_container,#forgetthird').hide();
+				                	   $('#forgetsecond').show();
+				                	   $('#forgetsecond .values span.two').html(oresult.email);
+									   $('#forgetsecond').find('.forgetpwdcode').attr('placeholder','请输入验证码');
+								       $('.token').val(oresult.token);
+									 	$('.ctype').val(oresult.ctype);
+									 	$('.sendmail').val(username);
+				                   }else{
+				                	   $('#frame_container,#forgetsecond').hide();
+				                	   $('#forgetthird').show();
+				                	   $('#forgetthird .name').html(oresult.email);
+					       			   $('#forgetthird .third_token').val(oresult.token);
+					       			   $('#forgetthird .ctype').val(oresult.ctype);
+					               }
+						       }else{
+									location.reload(); return false; 
+					           }
+			               })
+                           * */
+	                  // }
+                        }
+               }
+	        }).error(function() {
+	                alert('请求失败'); 
+	        });
+    })
+
+   
+
+// 	验证验证码后下一步；
+	$('#forgetsecond .form_submit').click(function(event){
+        event.preventDefault();
+        var forgetpwd_code=$('#forgetsecond').find('input[name=forgetpwd_code]').val();
+        if($.trim(forgetpwd_code)==''){
+        	$('#forgetsecond').find('input[name=forgetpwd_code]').addClass('error').focus();
+			return;
+        }
+
+		if($.trim($('#forgetsecond').find('input[name=rand_rsend]').val())==''){
+               $('#forgetsecond').find('input[name=rand_rsend]').addClass('error').focus();
+               return;
+        }
+
+        var param=$('#forgetsecond #forgetform').serialize();
+        var formel=$('#forgetsecond');
+        formel.find('.status').removeClass('error').html('发送中...').show();
+        $.post(parseToURL('wp_signin','check_forgetpwd'),param ,function(o_result) {
+			o_result=$.parseJSON(o_result);
+			if (o_result.result == "ERROR") {
+				if(o_result.errmsg=='Session expire!'){location.reload();return false; }
+				formel.find('.status').addClass('error').html(o_result.errmsg).show();
+				return false;
+			} else if (o_result.result == "OK") {
+				formel.find('.status').removeClass('error').html('跳转中...').show();
+				$('#frame_container,#forgetsecond').hide();
+				$('#forgetthird').show();
+				$('#forgetthird .name').html(o_result.username);
+				$('#forgetthird .third_token').val(o_result.token);
+				$('#forgetthird .ctype').val(o_result.ctype);
+				return false;
+			} else {
+				alert('请求失败'); 
+			}
+		}).error(function() {
+			alert('请求失败'); 
+		});
+	})
+    
+    //邮件找回2，发送邮件 加个$token
+    $('.forget_send_submit').click(function(event){ 
+            event.preventDefault();
+            var formel=$('#forgetsecondnew #forgetform');
+            if($(this).attr('data')==1){
+                return false;
+            }
+            formel.find('.text_input.error').removeClass('error');
+            formel.find('.status').removeClass('error').html('发送中...').show();
+            var randstr = formel.find('#rand_rsend').val();
+            var param = 'token=3GazOEiCSf&nextat=sendto&s='+new Date().getTime()+'&ctype='+$('.ctype').val()+'&needyanzheng=1&rand_rsend='+randstr+'&capkey=forgetpwdend'+'&sendmail='+$('.sendmail').val();
+            $.post(parseToURL('wp_signin','check_forgetpwd'),param ,function(o_result) {
+                o_result=$.parseJSON(o_result);
+				var captcha=formel.find('#yzmshow4 img');
+                 captcha.triggerHandler('click');
+				 formel.find('#rand_rsend').val('');
+                if (o_result.result == "ERROR") {
+                    if(o_result.errmsg=='Session expire!'){location.reload();return false; }
+                    formel.find('.status').addClass('error').html(o_result.errmsg).show();
+                    return false;
+                } else if (o_result.result == "OK") {
+                    sms_times1(formel.find('a.forget_send_submit'));
+                    formel.find('.status').removeClass('error').html(o_result.info).show();
+                    return false;
+                } else {
+                    alert('请求失败'); 
+                }
+            }).error(function() {
+                    alert('请求失败'); 
+            });
+    })
+    //邮件找回2,提交
+    $('#forgetsecondnew .form_submit').click(function(event){
+        event.preventDefault();
+        var formel=$('#forgetsecondnew #forgetform');
+        var forgetpwd_code=formel.find('input[name=forgetpwd_code]').val();
+        if($.trim(forgetpwd_code)==''){
+        	formel.find('input[name=forgetpwd_code]').addClass('error').focus();
+			return;
+        }
+		if($.trim(formel.find('input[name=rand_rsend]').val())==''){
+               formel.find('input[name=rand_rsend]').addClass('error').focus();
+               return;
+        }
+
+        var param=formel.serialize();
+        formel.find('.status').removeClass('error').html('发送中...').show();
+        $.post(parseToURL('wp_signin','check_forgetpwd'),param ,function(o_result) {
+			o_result=$.parseJSON(o_result);
+			if (o_result.result == "ERROR") {
+				if(o_result.errmsg=='Session expire!'){location.reload();return false; }
+				formel.find('.status').addClass('error').html(o_result.errmsg).show();
+				return false;
+			} else if (o_result.result == "OK") {
+				formel.find('.status').removeClass('error').html('跳转中...').show();
+				$('#frame_container,#forgetsecondnew').hide();
+				$('#forgetthird').show();
+				$('#forgetthird .name').html(o_result.username);
+				$('#forgetthird .third_token').val(o_result.token);
+				$('#forgetthird .ctype').val(o_result.ctype);
+				return false;
+			} else {
+				alert('请求失败'); 
+			}
+		}).error(function() {
+			alert('请求失败'); 
+		});
+	})
+    
+    function sms_times1(o) {
+		if (wait == 0) {
+			o.attr("data","0");			
+			o.html("发送");
+			wait = 60;
+			return;
+		}else{	
+			o.attr("data","1");			
+			o.html(wait + "秒");
+			wait--;
+			setTimeout(function() {
+				sms_times1(o)
+			},
+			1000)
+		}
+	}
+
+    //第三步输入新密码点击确认按钮：
+    $('#forgetthird .form_submit').click(function(event){
+		event.preventDefault();
+		$('#forgetthird').find('.text_input.error').removeClass('error');
+		var passwd=$('#forgetthird').find('input[name=passwd]').val();
+		var passwd_confrim=$('#forgetthird').find('input[name=passwd_confrim]').val();
+		if($.trim(passwd)==''){
+			$('#forgetthird').find('.status').addClass('error').html('请输入新密码').focus();
+			return;
+		}
+		if($.trim(passwd_confrim)==''){
+			$('#forgetthird').find('.status').addClass('error').html('请输入确认密码').focus();
+			return;
+		}
+		var formel=$('#forgetthird');
+		if($.trim(passwd)!=$.trim(passwd_confrim)){
+			formel.find('.status').addClass('error').html('您输入的密码与确认密码不一致').show();
+ 			return;
+		}
+		var param=$('#forgetthird #forgetform').serialize();
+		formel.find('.status').removeClass('error').html('加载中...').show();
+		$.post(parseToURL('wp_signin','check_forgetpwd'),param ,function(o_result) {
+			o_result=$.parseJSON(o_result);
+			if (o_result.result == "ERROR") {
+				if(o_result.errmsg=='Session expire!'){location.reload();return false; }
+				else{ formel.find('.status').addClass('error').html(o_result.errmsg).show();}
+				return false;
+			} else if (o_result.result == "OK") {
+				formel.find('.status').removeClass('error').html(o_result.info).show();
+				$("input[type='password']").attr("disabled","disabled");
+                var urls = "/index.php?hdname=&fxid=&_m=tb_shopping_cart&_a=showOrderInterface&wproduct_paynum=1&pid=56&max_kc=99999&fxid=0&messtype=1&contents=&item_id=56&prosku=",url='';
+                if(urls.indexOf("userlogin")>0){
+                    url="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=userlogin&_a=third_login";
+                }else{
+                    url="http://wd-shops-1293157-m.view.sitestar.cn/index.php?_m=wp_signin&_a=entrance";
+                }
+				setTimeout(function(){
+ 					location.href = url;
+					return;
+				},1000)
+				return false;
+			} else {
+				alert('请求失败'); 
+			}
+		}).error(function() {
+			alert('请求失败'); 
+		});
+    })
+
+ 
+	$('#wx_input_name .form_submit').click(function(event){
+        event.preventDefault();
+		var yanzheng = $('#wx_input_name #rand_rs3').val();
+		var errorstip = $('#wx_input_name #forgetform .status');
+        var username = $('#wx_input_name #WX_username').val();
+		if(username == ''){
+			errorstip.html("请填写用户名");
+			$('#wx_input_name #WX_username').focus();
+			return false;
+		}
+		if(yanzheng == ''){
+			//errorstip.html("安全问题请确认正确后再点击此按钮获取短信验证码");
+			//$('#wx_input_name #WX_yanzheng').focus();
+			//return false;
+		}
+        var token = $('#wx_input_name #forgetform .token').val(),rand_s = $('#wx_input_name #forgetform #rand_rs3').val();
+        var capkey = $('#wx_input_name #forgetform').find('input[name=capkey]').val();
+        		$.ajax({
+			type: "POST",
+			url: parseToURL("wp_signin","weixin_renzheng"),
+			data: {username:username,step:"",token:token,rand_s:rand_s,capkey:capkey},
+			success: function(response){
+				var json = $.parseJSON(response);
+				if (json.result == "OK") {
+					if(json.status){
+						shows('.frontbg,#wx_input_code');
+						$('#wx_input_code .names').html(json.username);
+						$('#wx_input_code .token_s').html(json.token);
+						$('#wx_input_code #WX_username').val(json.username);
+					}else{
+						errorstip.html(json.errmsg);	
+					}
+				}else if (json.result == 'ERROR') {
+					errorstip.html(json.errmsg);
+					//$('#WX_username').focus();
+                    var captcha=$('#yzmshow3 img');
+                    captcha.triggerHandler('click');
+                    return false;
+				}
+			},
+			error: function(xhr, textStatus, errorThrown){
+				alert(xhr.readyState+','+xhr.status+' - '+(errorThrown||textStatus)+"(unbind_third_account).<br/>"+translate("Request failed!"));
+				return false;
+			}
+		});
+    })
+    $("#yzmshow4 img").click(function(){
+        $("#yzmshow4").show();
+         var captcha = $(this);
+         var capkey=$("#yzmshow4").siblings('input[name=capkey]').val();		
+         captcha.attr('src',parseToURL('userlogin','captcha',{capkey:capkey,'s':new Date().getTime()}));
+    });
+    $("#yzmshow3 img").click(function(){
+        $("#yzmshow3").show();
+         var captcha = $(this);
+         var capkey=$("#yzmshow3").siblings('input[name=capkey]').val();
+         captcha.attr('src',parseToURL('userlogin','captcha',{capkey:capkey,'s':new Date().getTime()}));
+    });
+
+// 	微信找回点击下一步
+	$('#wx_input_code .form_submit').click(function(event){
+        event.preventDefault();
+		var yanzheng = $('#wx_input_code #WX_yanzheng').val(),errorstip = $('#wx_input_code #forgetform .status');
+        var username = $('#wx_input_code #WX_username').val();
+		if(username == ''){
+			errorstip.html("请填写用户名");
+			$('#WX_username').focus();
+			return false;
+		}
+		if(yanzheng == ''){
+			errorstip.html("请先回答安全问题再点击此按钮获取短信验证码");
+			$('#WX_yanzheng').focus();
+			return false;
+		}
+		$.ajax({
+			type: "POST",
+			url: parseToURL("wp_signin","weixin_renzheng"),
+			data: {yanzheng:yanzheng,username:username,step:1},
+			success: function(response){
+				var json = $.parseJSON(response);
+				if (json.result == "OK") {
+					shows('.frontbg,#forgetthird');
+	             	$('#forgetthird .name').html(json.username);
+		       		$('#forgetthird .third_token').val(json.token);
+		       		$('#forgetthird .ctype').val(json.ctype);
+				}else if (json.result == 'ERROR') {
+					errorstip.html(json.errmsg);
+					$('#WX_yanzheng').focus();
+                    return false;
+				}
+			},
+			error: function(xhr, textStatus, errorThrown){
+				alert(xhr.readyState+','+xhr.status+' - '+(errorThrown||textStatus)+"(unbind_third_account).<br/>"+translate("Request failed!"));
+				return false;
+			}
+		});
+    })
+})
+	
+
+	
+
+</script>
+
+</body></html>

@@ -1,0 +1,44 @@
+.webuploader-container {
+	//position: relative;
+        background: white;
+}
+.webuploader-element-invisible {
+	position: absolute !important;
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px,1px,1px,1px);
+}
+.webuploader-pick {
+    width: 100%;
+    display: inline-block;
+	position: relative;
+	//display: inline-block;
+	cursor: pointer;
+	//background: white;
+	//padding: 0px 0px 1px 0px;
+	//color: #626262;
+	border-radius: 3px;
+	overflow: hidden;
+	//background: url(../../template/default/images/wp-button-bg.gif) repeat-x bottom #5183c9;
+    line-height: 54px;
+    position:relative;
+}
+/*.webuploader-pick:before{ content:'.'; display:inline-block; line-height: 33px; background: url(../../template/default/images/wp-picture-upload_arrow.png) no-repeat 0 6px;
+    text-indent:-999px;
+    padding-left: 20px;
+    margin-left: 5px;}*/
+.webuploader-pick-hover {
+	//background: #2e5fb2;
+}
+
+.webuploader-pick-disable {
+	opacity: 0.6;
+	pointer-events:none;
+}
+.webuploader-pick_btn{
+    float: right;
+    display: inline-block;
+    background-color: #fff100;
+    color: #26a860;
+    padding: 0 9px;
+}
+
