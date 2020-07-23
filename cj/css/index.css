@@ -212,8 +212,8 @@ body {
   background: url('../img/bg_lottery_f.png') center no-repeat;
 }
 .lottery-wrap img {
-  width: 93px;
-  height: 69px;
+  width: 120px;
+  height: 85px;
 }
 .lottery-wrap span {
   box-sizing: border-box;
@@ -270,8 +270,8 @@ body {
   transform: rotate(247.5deg);
 }
 .lottery-wrap span.lottery-span6 img {
-  width: 80px;
-  height: 55px;
+  width: 120px;
+  height: 85px;
 }
 .lottery-wrap span.lottery-span7 {
   -webkit-transform: rotate(292.5deg);
@@ -286,8 +286,8 @@ body {
   transform: rotate(337.5deg);
 }
 .lottery-wrap span.lottery-span8 img {
-  width: 54px;
-  height: 98px;
+  width: 120px;
+  height: 85px;
 }
 .lottery-wrap i {
   display: block;
