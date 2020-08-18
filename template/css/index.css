@@ -111,7 +111,6 @@ input {
 body {
   padding: 0;
   margin: 0;
-  background: #000000;
 }
 html,
 body,
@@ -185,9 +184,6 @@ body {
   width: 100%;
   margin: 0 auto 0;
   position: relative;
-}
-body {
-  background-color: #1b1b1b;
 }
 .hover:hover {
   opacity: 0.8;
@@ -317,7 +313,7 @@ body {
 }
 .lottery-btn i {
   position: absolute;
-  top: -15px;
+  top: -29px;
   left: 50%;
   margin-left: -10.5px;
   width: 21px;
